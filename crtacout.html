@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Account - Glowup Studio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #ff7f50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 36px;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .form-container {
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .form-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: block;
+            width: 100%;
+            max-width: 700px; /* Adjusted to make the form broader */
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: -8px;
+        }
+        button {
+            background-color: #ff7f50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #e66d40;
+        }
+        .terms-container {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Glowup Studio</div>
+    <div class="form-container">
+        <h1 class="form-title">Create Your Account</h1>
+        <form id="signupForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <span id="nameError" class="error"></span><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <span id="emailError" class="error"></span><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <span id="passwordError" class="error"></span><br><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age">
+            <span id="ageError" class="error"></span><br><br>
+
+            <div class="terms-container">
+                <label>
+                    <input type="checkbox" id="terms" name="terms">
+                    I agree to the <a href="#">terms and conditions</a>.
+                </label>
+                <span id="termsError" class="error"></span>
+            </div>
+
+            <button type="button" onclick="validateForm()">Submit</button>
+        </form>
+    </div>
+    <footer>
+        &copy; 2024 Glowup Studio. All Rights Reserved.
+    </footer>
+
+    <script>
+        function validateForm() {
+            // Clear previous error messages
+            document.getElementById("nameError").textContent = "";
+            document.getElementById("emailError").textContent = "";
+            document.getElementById("passwordError").textContent = "";
+            document.getElementById("ageError").textContent = "";
+            document.getElementById("termsError").textContent = "";
+
+            let isValid = true;
+
+            // Name validation
+            const name = document.getElementById("name").value.trim();
+            if (name === "") {
+                document.getElementById("nameError").textContent = "Name is required.";
+                isValid = false;
+            }
+
+            // Email validation
+            const email = document.getElementById("email").value.trim();
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (email === "") {
+                document.getElementById("emailError").textContent = "Email is required.";
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                document.getElementById("emailError").textContent = "Invalid email format.";
+                isValid = false;
+            }
+
+            // Password validation
+            const password = document.getElementById("password").value.trim();
+            if (password === "") {
+                document.getElementById("passwordError").textContent = "Password is required.";
+                isValid = false;
+            } else if (password.length < 6) {
+                document.getElementById("passwordError").textContent = "Password must be at least 6 characters long.";
+                isValid = false;
+            }
+
+            // Age validation
+            const age = document.getElementById("age").value.trim();
+            if (age === "") {
+                document.getElementById("ageError").textContent = "Age is required.";
+                isValid = false;
+            } else if (isNaN(age) || age <= 0) {
+                document.getElementById("ageError").textContent = "Age must be a positive number.";
+                isValid = false;
+            }
+
+            // Terms and Conditions validation
+            const terms = document.getElementById("terms").checked;
+            if (!terms) {
+                document.getElementById("termsError").textContent = "You must agree to the terms and conditions.";
+                isValid = false;
+            }
+
+            // If all validations pass
+            if (isValid) {
+                alert("Account created successfully!");
+                // You can redirect or perform additional actions here
+            }
+        }
+    </script>
+</body>
+</html>

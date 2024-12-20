@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowup Studio - Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #ff7f50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 36px;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .gallery-container {
+            text-align: center;
+            padding: 100px 20px 50px; /* Add padding to the top to avoid overlap with the fixed header */
+        }
+        .gallery-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 0 20px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .caption {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Glowup Studio</div>
+
+    <div class="gallery-container">
+        <h1 class="gallery-title">Our Gallery</h1>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/mHPPWYc/hl6x-ZDk-JSBSQDwylfut-Lu-Q.webp" alt="hl6x-ZDk-JSBSQDwylfut-Lu-Q" border="0" />
+                <div class="caption">Trendy Haircuts</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/yBq98M0/dj-ITk-L1-Sna-Jm7-CQQ2j-Mdw.jpg" alt="dj-ITk-L1-Sna-Jm7-CQQ2j-Mdw" border="0" />
+                <div class="caption">Vibrant Hair Coloring</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/tX9SgTd/kdnq4-ZWRMWwy6-Q-2zbn-XA.webp" alt="kdnq4-ZWRMWwy6-Q-2zbn-XA" border="0" />
+                <div class="caption">Relaxing Spa Treatment</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/gJRTxVm/RYZ-CAk-TSWKBDQD9-CFAzg.webp" alt="RYZ-CAk-TSWKBDQD9-CFAzg" border="0" />
+                <div class="caption">Special Event Styling</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/dDTgY3D/k-Xg-Zt-Rp-IQju-Re44-LIPi-Lcw.jpg" alt="k-Xg-Zt-Rp-IQju-Re44-LIPi-Lcw" border="0" /></a>
+                <div class="caption">Modern Hair Looks</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/vmvVcR8/fdzi-x-M-QVe1-Bxcrd-BGMw.jpg" alt="fdzi-x-M-QVe1-Bxcrd-BGMw" border="0" />
+                               <div class="caption">Silky Smooth Finishes</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/26851YD/rw-HXt-OPSKe6-AD1-UHn1-HTw.webp" alt="rw-HXt-OPSKe6-AD1-UHn1-HTw" border="0" />
+                <div class="caption">Creative Styles</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/Byp7FCM/Ov6-Keqol-Rp-Oe-LZdol-Bt-Wsg.webp" alt="Ov6-Keqol-Rp-Oe-LZdol-Bt-Wsg" border="0" />
+                <!-- <img src="https://i.ibb.co/mHPPWYc/hl6x-ZDk-JSBSQDwylfut-Lu-Q.webp" alt="hl6x-ZDk-JSBSQDwylfut-Lu-Q" border="0" /> -->
+                <!-- <img src="https://via.placeholder.com/250" alt="Classic Cuts"> -->
+                <div class="caption">Classic Cuts</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Glowup Studio. All Rights Reserved.
+    </footer>
+</body>
+</html>

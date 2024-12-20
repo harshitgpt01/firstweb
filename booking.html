@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowup Studio - Book an Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #ff7f50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 36px;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .booking-container {
+            text-align: center;
+            padding: 100px 20px 50px; /* Adjusted for the fixed header */
+        }
+        .booking-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .booking-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: 0 auto;
+        }
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #ff7f50;
+        }
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            height: 150px;
+        }
+        .form-button {
+            background-color: #ff7f50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        .form-button:hover {
+            background-color: #e66d40;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Glowup Studio</div>
+
+    <div class="booking-container">
+        <h1 class="booking-title">Book Your Appointment</h1>
+        <div class="booking-form">
+            <form id="bookingForm">
+                <input class="form-input" type="text" id="name" name="name" placeholder="Your Name">
+                <span id="nameError" class="error"></span>
+
+                <input class="form-input" type="email" id="email" name="email" placeholder="Your Email">
+                <span id="emailError" class="error"></span>
+
+                <input class="form-input" type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                <span id="phoneError" class="error"></span>
+
+                <select class="form-input" id="service" name="service">
+                    <option value="">Select Service</option>
+                    <option value="Haircut">Haircut</option>
+                    <option value="Hair Coloring">Hair Coloring</option>
+                    <option value="Spa Treatment">Spa Treatment</option>
+                    <option value="Event Styling">Event Styling</option>
+                </select>
+                <span id="serviceError" class="error"></span>
+
+                <input class="form-input" type="date" id="date" name="date">
+                <span id="dateError" class="error"></span>
+
+                <input class="form-input" type="time" id="time" name="time">
+                <span id="timeError" class="error"></span>
+
+                <textarea class="form-textarea" id="message" name="message" placeholder="Additional Notes (optional)"></textarea>
+
+                <button class="form-button" type="button" onclick="validateForm()">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Glowup Studio. All Rights Reserved.
+    </footer>
+
+    <script>
+        function validateForm() {
+            // Clear previous error messages
+            document.getElementById("nameError").textContent = "";
+            document.getElementById("emailError").textContent = "";
+            document.getElementById("phoneError").textContent = "";
+            document.getElementById("serviceError").textContent = "";
+            document.getElementById("dateError").textContent = "";
+            document.getElementById("timeError").textContent = "";
+
+            let isValid = true;
+
+            // Name validation
+            const name = document.getElementById("name").value.trim();
+            if (name === "") {
+                document.getElementById("nameError").textContent = "Name is required.";
+                isValid = false;
+            }
+
+            // Email validation
+            const email = document.getElementById("email").value.trim();
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (email === "") {
+                document.getElementById("emailError").textContent = "Email is required.";
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                document.getElementById("emailError").textContent = "Invalid email format.";
+                isValid = false;
+            }
+
+            // Phone validation
+            const phone = document.getElementById("phone").value.trim();
+            const phonePattern = /^[0-9]{10}$/;
+            if (phone === "") {
+                document.getElementById("phoneError").textContent = "Phone number is required.";
+                isValid = false;
+            } else if (!phonePattern.test(phone)) {
+                document.getElementById("phoneError").textContent = "Phone number must be 10 digits.";
+                isValid = false;
+            }
+
+            // Service validation
+            const service = document.getElementById("service").value;
+            if (service === "") {
+                document.getElementById("serviceError").textContent = "Please select a service.";
+                isValid = false;
+            }
+
+            // Date validation
+            const date = document.getElementById("date").value.trim();
+            if (date === "") {
+                document.getElementById("dateError").textContent = "Date is required.";
+                isValid = false;
+            }
+
+            // Time validation
+            const time = document.getElementById("time").value.trim();
+            if (time === "") {
+                document.getElementById("timeError").textContent = "Time is required.";
+                isValid = false;
+            }
+
+            // If all validations pass
+            if (isValid) {
+                alert("Appointment booked successfully!");
+                document.getElementById("bookingForm").reset();
+            }
+        }
+    </script>
+</body>
+</html>

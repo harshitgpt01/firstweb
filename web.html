@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowup Studio</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        
+        .header {
+            background-color: #ff7f50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 48px;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: fixed;
+            top: 0;
+            
+            width: 100%;
+            z-index: 1000;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff7f50, 0 0 20px #ff7f50, 0 0 30px #ff7f50, 0 0 40px #ff7f50;
+            }
+            to {
+                text-shadow: 0 0 20px #ff7f50, 0 0 30px #ff7f50, 0 0 40px #ff7f50, 0 0 50px #ff7f50;
+            }
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            position: fixed;
+            top: 80px;
+            height: 80px;
+            width: 100%;
+            padding: 10px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: inline-block;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #ff7f50;
+        }
+        nav a:before {
+            content: '•';
+            margin-right: 10px;
+        }
+        .login-button, .signup-button {
+            position: fixed;
+            top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1100;
+        }
+
+        .login-button {
+            left: 10px;
+            background-color: #ff7f50;
+        }
+        .login-button:hover {
+            background-color: #e66d40;
+        }
+
+        .signup-button {
+            right: 10px;
+            background-color: #ff7f50;
+        }
+        .signup-button:hover {
+            background-color: #e66d40;
+        }
+
+
+        /* Main Content Section */
+        .main-section {
+            padding-top: 120px;
+            text-align: center;
+            background-image: url("https://i.ibb.co/NCxx4Zw/OI1lx8fa-S-Kl-CXfp-CJew-Aw.webp");
+            background-size: cover;
+            background-position: center;
+            color: #FFB200;
+            padding: 100px 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-section h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .book-now-button {
+            background-color: #ff7f50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            transition: background-color 0.3s;
+        }
+
+        .book-now-button:hover {
+            background-color: #e66d40;
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .contact-info h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            font-size: 18px;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        .gallery-section h3 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-image {
+            width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .review {
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .classic-gallery-button {
+            background-color: #ff7f50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+        .classic-gallery-button:hover {
+            background-color: #e66d40;
+        }
+        /* Pricing Table Section */
+.pricing-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.pricing-section h3 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.pricing-table {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.pricing-option {
+    width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.pricing-option h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.pricing-option p {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff7f50;
+    margin-bottom: 20px;
+}
+
+.pricing-option ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.pricing-option li {
+    margin-bottom: 10px;
+}
+
+.pricing-button {
+    background-color: #ff7f50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.pricing-button:hover {
+    background-color: #e66d40;
+}
+
+/* For More Services Button */
+.more-services-button {
+    background-color: #ff7f50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.more-services-button:hover {
+    background-color: #e66d40;
+}
+
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">Glowup Studio
+        <img height="80px" align="center" src="img.jpng">
+    </div>
+
+    <nav style="margin-top: 20px;">
+        <a href="http://127.0.0.1:5500/aboutus.html">About Us</a>
+        <a href="http://127.0.0.1:5500/sacontact.html">Contact</a>
+        <a href="http://127.0.0.1:5500/booking.html">Booking</a>
+        <a href="http://127.0.0.1:5500/review.html">Reviews</a>
+        <a href="http://127.0.0.1:5500/service.html">Services</a>
+
+        <a href="http://127.0.0.1:5500/gallery.html">Gallery</a>
+    </nav>
+
+
+      <!-- Fixed Login and Signup Buttons -->
+      <button class="login-button" onclick="window.location.href='http://127.0.0.1:5500/login.html'">Login</button>
+      <button class="signup-button" onclick="window.location.href='http://127.0.0.1:5500/signup.html'">Signup</button>
+
+    <!-- Main Content Section with Background Image -->
+    <section class="main-section">
+        <h2>Glowup Your Beauty with Us</h2>
+        <div class="quote">"Beauty begins the moment you decide to be yourself."</div>
+        <button class="book-now-button" onclick="window.location.href='http://127.0.0.1:5500/booking.html'">Book Now</button>
+        <div>Glowup Studio - Your Beauty, Our Priority</div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <h3>Our Gallery</h3>
+        <div class="gallery-images">
+            <!-- Image 1 -->
+            <div class="gallery-image">
+                <img src="https://i.ibb.co/vmvVcR8/fdzi-x-M-QVe1-Bxcrd-BGMw.jpg" alt="fdzi-x-M-QVe1-Bxcrd-BGMw" border="0" />
+                <p class="review">"Amazing service, will come again!"</p>
+            </div>
+            <!-- Image 2 -->
+            <div class="gallery-image">
+                <img src="https://i.ibb.co/gJRTxVm/RYZ-CAk-TSWKBDQD9-CFAzg.webp" alt="RYZ-CAk-TSWKBDQD9-CFAzg" border="0" />
+                <p class="review">"Loved the experience, highly recommended!"</p>
+            </div>
+            <!-- Image 3 -->
+            <div class="gallery-image">
+            <img src="https://i.ibb.co/dDTgY3D/k-Xg-Zt-Rp-IQju-Re44-LIPi-Lcw.jpg" alt="k-Xg-Zt-Rp-IQju-Re44-LIPi-Lcw" border="0" /></a>
+                <p class="review">"Exceptional results, a true glow-up!"</p>
+            </div>
+        </div>
+        <button class="classic-gallery-button" onclick="window.location.href='http://127.0.0.1:5500/gallery.html'">View Our Classic Gallery</button>
+    </section>
+
+    <!-- Pricing Table Section -->
+<section class="pricing-section">
+    <h3>Our Pricing</h3>
+    <div class="pricing-table">
+        <!-- Pricing Option 1 -->
+        <div class="pricing-option">
+            <h4>Basic Glow</h4>
+            <p>&#8377 50</p>
+            <ul>
+                <li>1 Facial Treatment</li>
+                <li>1 Hair Treatment</li>
+                <li>Free Consultation</li>
+            </ul>
+            <button class="pricing-button" onclick="window.location.href='http://127.0.0.1:5500/booking.html'">Book Now</button>
+        </div>
+        <!-- Pricing Option 2 -->
+        <div class="pricing-option">
+            <h4>Premium Glow</h4>
+            <p>&#8377 100</p>
+            <ul>
+                <li>2 Facial Treatments</li>
+                <li>1 Hair Treatment</li>
+                <li>Free Consultation</li>
+                <li>Additional Skincare Package</li>
+            </ul>
+            <button class="pricing-button" onclick="window.location.href='http://127.0.0.1:5500/booking.html'">Book Now</button>
+        </div>
+        <!-- Pricing Option 3 (Optional) -->
+        <div class="pricing-option">
+            <h4>Ultimate Glow</h4>
+            <p>&#8377 150</p>
+            <ul>
+                <li>3 Facial Treatments</li>
+                <li>2 Hair Treatments</li>
+                <li>Free Consultation</li>
+                <li>Personalized Skincare Package</li>
+                <li>Exclusive Membership</li>
+            </ul>
+            <button class="pricing-button" onclick="window.location.href='http://127.0.0.1:5500/booking.html'">Book Now</button>
+        </div>
+    </div>
+    <button class="more-services-button" onclick="window.location.href='http://127.0.0.1:5500/service.html'">For More Services</button>
+</section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info" id="contact">
+        <h3>Contact Us</h3>
+        <p>Email: glowupstudio@gmail.com</p>
+        <p>Phone: +91 9826839922</p>
+        <p>Location: 123 Beauty St, Glowness City</p>
+        <button class="contact-us-button" onclick="window.location.href='http://127.0.0.1:5500/sacontact.html'">Contact Us</button>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer>
+        &copy; 2024 Glowup Studio. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
